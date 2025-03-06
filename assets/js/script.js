@@ -1,11 +1,3 @@
-'use strict';
-
-
-
-/**
- * PRELOADER
- */
-
 const preloader = document.querySelector("[data-preloader]");
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -13,23 +5,11 @@ window.addEventListener("DOMContentLoaded", function () {
   document.body.classList.add("loaded");
 });
 
-
-
-/**
- * add event on multiple elements
- */
-
 const addEventOnElements = function (elements, eventType, callback) {
   for (let i = 0, len = elements.length; i < len; i++) {
     elements[i].addEventListener(eventType, callback);
   }
 }
-
-
-
-/**
- * Mobile navbar toggle
- */
 
 const navbar = document.querySelector("[data-navbar]");
 const navTogglers = document.querySelectorAll("[data-nav-toggler]");
@@ -48,23 +28,11 @@ addEventOnElements(navLinks, "click", function () {
   document.body.classList.remove("nav-active");
 });
 
-
-
-/**
- * Header active
- */
-
 const header = document.querySelector("[data-header]");
 
 window.addEventListener("scroll", function () {
   header.classList[window.scrollY > 100 ? "add" : "remove"]("active");
 });
-
-
-
-/**
- * Element tilt effect
- */
 
 const tiltElements = document.querySelectorAll("[data-tilt]");
 
@@ -86,12 +54,6 @@ addEventOnElements(tiltElements, "mousemove", initTilt);
 addEventOnElements(tiltElements, "mouseout", function () {
   this.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
 });
-
-
-
-/**
- * Tab content
- */
 
 const tabBtns = document.querySelectorAll("[data-tab-btn]");
 const tabContents = document.querySelectorAll("[data-tab-content]");
@@ -120,12 +82,6 @@ const filterContent = function () {
 
 addEventOnElements(tabBtns, "click", filterContent);
 
-
-
-/**
- * Custom cursor
- */
-
 const cursors = document.querySelectorAll("[data-cursor]");
 const hoveredElements = [...document.querySelectorAll("button"), ...document.querySelectorAll("a")];
 
@@ -138,7 +94,6 @@ window.addEventListener("mousemove", function (event) {
   cursors[0].style.left = `${posX}px`;
   cursors[0].style.top = `${posY}px`;
 
-  /** cursor outline position */
   setTimeout(function () {
     cursors[1].style.left = `${posX}px`;
     cursors[1].style.top = `${posY}px`;
@@ -146,14 +101,12 @@ window.addEventListener("mousemove", function (event) {
 
 });
 
-/** add hovered class when mouseover on hoverElements */
 addEventOnElements(hoveredElements, "mouseover", function () {
   for (let i = 0, len = cursors.length; i < len; i++) {
     cursors[i].classList.add("hovered");
   }
 });
 
-/** remove hovered class when mouseout on hoverElements */
 addEventOnElements(hoveredElements, "mouseout", function () {
   for (let i = 0, len = cursors.length; i < len; i++) {
     cursors[i].classList.remove("hovered");
